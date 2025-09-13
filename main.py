@@ -2,7 +2,6 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLineEdit
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-import math
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -28,7 +27,9 @@ class MainWindow(QWidget):
         self.point = QPushButton(".", self)
         self.clear = QPushButton("C", self)
         self.div = QPushButton("/", self)
+        self.calc = QPushButton('=', self)
         self.initUI()
+
     def initUI(self):
         # Setting the buttons and the layout of the application
         box = QGridLayout()
@@ -49,7 +50,28 @@ class MainWindow(QWidget):
         box.addWidget(self.point, 4, 1)
         box.addWidget(self.clear, 4, 2)
         box.addWidget(self.div, 4, 3)
+        box.addWidget(self.calc)
         self.setLayout(box)
+        # Connect buttons to the function (print)
+        self.nine.clicked.connect(self.print_value)
+        self.eight.clicked.connect(self.print_value)
+        self.seven.clicked.connect(self.print_value)
+        self.plus.clicked.connect(self.print_value)
+        self.six.clicked.connect(self.print_value)
+        self.five.clicked.connect(self.print_value)
+        self.four.clicked.connect(self.print_value)
+        self.minus.clicked.connect(self.print_value)
+        self.tree.clicked.connect(self.print_value)
+        self.two.clicked.connect(self.print_value)
+        self.one.clicked.connect(self.print_value)
+        self.multi.clicked.connect(self.print_value)
+        self.zero.clicked.connect(self.print_value)
+        self.point.clicked.connect(self.print_value)
+        self.clear.clicked.connect(self.clear_input)
+        self.div.clicked.connect(self.print_value)
+        self.calc.clicked.connect(self.calculate)
+        # Make the input read only (prevent user to type using keyboard)
+        self.input.setReadOnly(True)
 
         # Styling
         self.input.setFixedWidth(400)
@@ -71,6 +93,23 @@ class MainWindow(QWidget):
                font-weigh: bold;
            }
         """)
+        self.calc.setStyleSheet("margin-left: 55px;")
+        self.calc.setFixedWidth(400)
+    def print_value(self):
+        btn = self.sender() # Get the clicked button
+        value = btn.text() # Get the value of the button
+        self.input.setText(self.input.text() + value)
+
+    def calculate(self):
+        try:
+            res = str(eval(self.input.text()))
+            self.input.setText(res)
+            print(res)
+        except:
+            self.input.setText("Error!")
+
+    def clear_input(self):
+        self.input.clear() # Clear instead of .setText("")
 
 def main():
     app = QApplication(sys.argv)
