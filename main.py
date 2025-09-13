@@ -30,7 +30,26 @@ class MainWindow(QWidget):
         self.div = QPushButton("/", self)
         self.initUI()
     def initUI(self):
-        pass
+        # Setting the buttons and the layout of the application
+        box = QGridLayout()
+        box.addWidget(self.input, 0, 0)
+        box.addWidget(self.nine, 1, 0)
+        box.addWidget(self.eight, 1, 1)
+        box.addWidget(self.seven, 1, 2)
+        box.addWidget(self.plus, 1, 3)
+        box.addWidget(self.six, 2, 0)
+        box.addWidget(self.five, 2, 1)
+        box.addWidget(self.four, 2, 2)
+        box.addWidget(self.minus, 2, 3)
+        box.addWidget(self.tree, 3, 0)
+        box.addWidget(self.two, 3, 1)
+        box.addWidget(self.one, 3, 2)
+        box.addWidget(self.multi, 3, 3)
+        box.addWidget(self.zero, 4, 0)
+        box.addWidget(self.point, 4, 1)
+        box.addWidget(self.clear, 4, 2)
+        box.addWidget(self.div, 4, 3)
+        self.setLayout(box)
 
 def main():
     app = QApplication(sys.argv)
