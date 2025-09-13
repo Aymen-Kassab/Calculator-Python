@@ -32,7 +32,7 @@ class MainWindow(QWidget):
     def initUI(self):
         # Setting the buttons and the layout of the application
         box = QGridLayout()
-        box.addWidget(self.input, 0, 0)
+        box.addWidget(self.input, 0, 0, )
         box.addWidget(self.nine, 1, 0)
         box.addWidget(self.eight, 1, 1)
         box.addWidget(self.seven, 1, 2)
@@ -50,6 +50,27 @@ class MainWindow(QWidget):
         box.addWidget(self.clear, 4, 2)
         box.addWidget(self.div, 4, 3)
         self.setLayout(box)
+
+        # Styling
+        self.input.setFixedWidth(400)
+        self.input.setAlignment(Qt.AlignCenter)
+        self.setStyleSheet("""
+           QWidget {
+               background-color: #3f60c4;
+           }
+           QLineEdit {
+               background-color: white;
+               font-size: 50px;
+               padding: 5px 20px;
+               margin-left: 55px;
+               border-radius: 20px;
+           }
+           QPushButton {
+               background-color: #cad0e0;
+               font-size: 45px;
+               font-weigh: bold;
+           }
+        """)
 
 def main():
     app = QApplication(sys.argv)
