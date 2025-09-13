@@ -19,7 +19,7 @@ class MainWindow(QWidget):
         self.five = QPushButton("5", self)
         self.four = QPushButton("4", self)
         self.minus = QPushButton("-", self)
-        self.tree = QPushButton("3", self)
+        self.three = QPushButton("3", self)
         self.two = QPushButton("2", self)
         self.one = QPushButton("1",self)
         self.multi = QPushButton("*", self)
@@ -42,7 +42,7 @@ class MainWindow(QWidget):
         box.addWidget(self.five, 2, 1)
         box.addWidget(self.four, 2, 2)
         box.addWidget(self.minus, 2, 3)
-        box.addWidget(self.tree, 3, 0)
+        box.addWidget(self.three, 3, 0)
         box.addWidget(self.two, 3, 1)
         box.addWidget(self.one, 3, 2)
         box.addWidget(self.multi, 3, 3)
@@ -61,7 +61,7 @@ class MainWindow(QWidget):
         self.five.clicked.connect(self.print_value)
         self.four.clicked.connect(self.print_value)
         self.minus.clicked.connect(self.print_value)
-        self.tree.clicked.connect(self.print_value)
+        self.three.clicked.connect(self.print_value)
         self.two.clicked.connect(self.print_value)
         self.one.clicked.connect(self.print_value)
         self.multi.clicked.connect(self.print_value)
@@ -90,7 +90,7 @@ class MainWindow(QWidget):
            QPushButton {
                background-color: #cad0e0;
                font-size: 45px;
-               font-weigh: bold;
+               font-weight: bold;
            }
         """)
         self.calc.setStyleSheet("margin-left: 55px;")
@@ -104,7 +104,6 @@ class MainWindow(QWidget):
         try:
             res = str(eval(self.input.text()))
             self.input.setText(res)
-            print(res)
         except:
             self.input.setText("Error!")
 
